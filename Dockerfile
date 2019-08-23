@@ -1,9 +1,9 @@
 FROM     python:3.6-alpine
 
-ARG      DOCKER_UID
+ARG      PUID
 
 # Create a user to run the application
-RUN      adduser -D -u ${DOCKER_UID} flexget
+RUN      adduser -D -u ${PUID} flexget
 WORKDIR  /home/flexget
 
 # Data and config volumes
