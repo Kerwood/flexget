@@ -34,7 +34,7 @@ if [ -f ~/.flexget/.config-lock ]; then
 fi
 flexget daemon start
 ```
-
+### Build
 Make a note of the current version of FlexGet on PyPI (we’ll use this to label the image we create). At time of writing, this is 2.20.25.  
 Navigate into the directory containing the files above. To build your image, run the following command (don’t forget to substitute in your docker user’s UID):
 
