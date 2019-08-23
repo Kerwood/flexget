@@ -1,7 +1,7 @@
 # flexget
 Just the orginal Dockerfile from https://flexget.com/InstallWizard/SynologyNAS/Docker
 
-`Dockerfile`
+### Dockerfile
 ```
 FROM     python:3.6-alpine
 
@@ -26,7 +26,7 @@ USER     flexget
 CMD      ["./start.sh"]
 ```
 
-`start.sh`
+### start.sh
 ```
 #!/bin/sh
 if [ -f ~/.flexget/.config-lock ]; then
@@ -40,4 +40,14 @@ Navigate into the directory containing the files above. To build your image, run
 
 ```
 docker build --build-arg PUID=1000 -t flexget:2.20.25 .
+```
+
+### Docker run
+```
+docker run -d \
+  --env "TZ=Europe/Copenhagen" \
+  --name flexget \
+  --restart unless-stopped \
+  --volume /volume1/docker/flexget:/home/flexget/.flexget \
+  flexget:2.20.25
 ```
