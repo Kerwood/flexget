@@ -1,9 +1,9 @@
-# flexget
+# flexget v.3
 Just the orginal Dockerfile from https://flexget.com/InstallWizard/SynologyNAS/Docker
 
 ### Dockerfile
 ```
-FROM     python:3.6-alpine
+FROM     python:3.8-alpine
 
 ARG      PUID
 
@@ -16,7 +16,7 @@ VOLUME   /home/flexget/.flexget
 VOLUME   /home/flexget/torrents
 
 # Install FlexGet
-RUN      pip3 install -U pip && pip3 install flexget
+RUN      pip3 install -U pip && pip3 install 'flexget>=3.0.0,<4.0.0'
 
 # Add start script
 COPY     start.sh /home/flexget/
@@ -35,11 +35,10 @@ fi
 flexget daemon start
 ```
 ### Build
-Make a note of the current version of FlexGet on PyPI (we’ll use this to label the image we create). At time of writing, this is 2.20.25.  
-Navigate into the directory containing the files above. To build your image, run the following command (don’t forget to substitute in your docker user’s UID):
+Navigate into the directory containing the files above. To build your image, run the following command (don’t forget to substitute in your user’s UID):
 
 ```
-docker build --build-arg PUID=1000 -t flexget:2.20.25 .
+docker build --build-arg PUID=1000 -t flexget:3 .
 ```
 
 ### Docker run
@@ -49,5 +48,5 @@ docker run -d \
   --name flexget \
   --restart unless-stopped \
   --volume /volume1/docker/flexget:/home/flexget/.flexget \
-  flexget:2.20.25
+  flexget:3
 ```
