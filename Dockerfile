@@ -1,4 +1,4 @@
-FROM     python:3.6-alpine
+FROM     python:3.8-alpine
 
 ARG      PUID
 
@@ -11,7 +11,7 @@ VOLUME   /home/flexget/.flexget
 VOLUME   /home/flexget/torrents
 
 # Install FlexGet
-RUN      pip3 install -U pip && pip3 install flexget
+RUN      pip3 install -U pip && pip3 install 'flexget>=3.0.0,<4.0.0'
 
 # Add start script
 COPY     start.sh /home/flexget/
