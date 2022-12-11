@@ -1,6 +1,8 @@
-FROM     python:3.8-alpine
+FROM     python:3.11-alpine
 
 ARG      PUID
+
+RUN apk add g++ linux-headers
 
 # Create a user to run the application
 RUN      adduser -D -u ${PUID} flexget
